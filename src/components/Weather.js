@@ -6,7 +6,7 @@ const Weather = props => {
     return Math.floor((temp - 273.15) * (9 / 5) + 32);
   };
   return (
-    <div>
+    <div className="card">
       <h1>{`Current weather in ${weather.name}`}</h1>
       <p>
         <strong>Temperature: </strong>

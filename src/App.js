@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import "./App.css";
+import "./index.css";
 import Weather from "./components/Weather";
 import Fitbit from "./components/Fitbit";
 
@@ -34,7 +34,7 @@ class App extends Component {
         {this.state.loading ? (
           <h1>Loading...</h1>
         ) : (
-          <div>
+          <div className="wrapper">
             <Weather data={this.state.weather} />
             <Fitbit />
           </div>

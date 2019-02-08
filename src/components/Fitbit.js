@@ -8,7 +8,7 @@ class Fitbit extends Component {
 
   render() {
     return (
-      <div style={{ marginTop: "50px" }}>
+      <div className="card">
         <h1>Fitbit Data</h1>
       </div>
     );

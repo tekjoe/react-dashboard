@@ -1,3 +1,10 @@
+:root {
+  --primary: #276d9b;
+  --secondary: #2c365e;
+  --text-color: #f8c296;
+  --border-color: #eff8f3;
+}
+
 *,
 *::before,
 *::after {
@@ -12,9 +19,37 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--primary);
+  color: var(--text-color);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.wrapper {
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  background-color: var(--secondary);
+  padding: 1.5em;
+  margin: 1.5em;
+  flex: auto 1 250px;
+  border-radius: 15px;
+}
+
+.card:hover {
+  box-shadow: 0 0 5px var(--border-color);
+  transition: box-shadow 0.5s;
+}
+
+@media (min-width: 600px) {
+  .wrapper {
+    flex-direction: row;
+    justify-content: center;
+  }
 }

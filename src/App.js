@@ -1,25 +1,44 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import axios from "axios";
+import "./App.css";
+import Weather from "./components/Weather";
+import Fitbit from "./components/Fitbit";
 
 class App extends Component {
+  state = {
+    weather: {},
+    loading: true
+  };
+
+  componentDidMount() {
+    this.getWeather();
+  }
+
+  getWeather = (
+    cityName = "Waukesha",
+    apiKey = "ff4017eac9d083cd5c45a59b256019a3"
+  ) => {
+    axios
+      .get(
+        `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`
+      )
+      .then(response => {
+        this.setState({ weather: { ...response.data }, loading: false });
+      })
+      .catch(error => console.log("error fetching and parsing data", error));
+  };
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        {this.state.loading ? (
+          <h1>Loading...</h1>
+        ) : (
+          <div>
+            <Weather data={this.state.weather} />
+            <Fitbit />
+          </div>
+        )}
       </div>
     );
   }
